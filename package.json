@@ -1,0 +1,13 @@
+{
+  "name": "layered-beauty",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Layered Beauty — wig revamp & restoration website (static, deployed on Cloudflare Workers static assets).",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
