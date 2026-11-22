@@ -3,3 +3,4 @@ node_modules/
 .dev.vars
 .env
 .DS_Store
+ADMIN_ACCESS_KEY.txt
