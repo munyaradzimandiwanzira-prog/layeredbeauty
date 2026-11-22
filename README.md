@@ -49,8 +49,29 @@ npm run deploy    # wrangler deploy (needs `wrangler login` or CLOUDFLARE_API_TO
 The `routes` in `wrangler.jsonc` attach both `layeredbeauty.com` and `www.layeredbeauty.com` as Custom Domains;
 the zone must be on the same Cloudflare account.
 
+## Booking system
+
+- Clients book at **/book**: choose a service, an open day (calendar) and a time. Requests are saved as *pending* and the slot is held immediately; double-booking is prevented atomically in D1.
+- The studio manages everything at **/admin** (sign in with the `ADMIN_TOKEN` secret):
+  - **Bookings** — confirm, cancel (frees the slot) or restore.
+  - **Block time** — block whole days / date ranges or a time range; blocked time vanishes from the client calendar instantly and any clashing bookings are flagged.
+  - **Hours & services** — weekly opening hours, slot interval, minimum notice, how far ahead clients can book, and the bookable services (name, duration, from-price).
+- All times are America/Toronto.
+
+### First-time setup
+
+```bash
+npx wrangler d1 create layered-beauty            # copy the database_id into wrangler.jsonc
+npx wrangler d1 migrations apply layered-beauty --remote
+npx wrangler secret put ADMIN_TOKEN              # long random string = your admin sign-in key
+npm run deploy
+```
+
+Local: put `ADMIN_TOKEN=...` in `.dev.vars`, run `npx wrangler d1 migrations apply layered-beauty --local`, then `npm run dev`.
+
 ## Known next steps
 
 - The intake form does **not** send submissions anywhere — clients download/print/copy a summary. Connect a secure form
   service (or a Worker + email/R2 storage) before advertising it as a submission form.
+- Booking emails are not sent yet — check /admin for new requests, or connect an email provider (e.g. Resend/Postmark) in `src/worker.js`.
 - Add a real contact method (email / Instagram) and real before-and-after photography once available.
