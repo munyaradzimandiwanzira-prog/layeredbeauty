@@ -1,4 +1,4 @@
-# Layered Beauty — www.layeredbeauty.com
+# Layered Beauty — www.layeredbeautystudio.com
 
 Marketing site and client intake for **Layered Beauty**, wig revamp & restoration.
 Static HTML/CSS/JS (no build step), served by **Cloudflare Workers static assets**.
@@ -14,7 +14,7 @@ public/
   assets/js/site.js     Header, mobile nav, scroll reveals, page transitions
   assets/js/intake.js   Intake validation, draft autosave, photo previews, download / print / copy
   _headers              Security headers + CSP + asset caching
-wrangler.jsonc          Cloudflare config (custom domains: layeredbeauty.com, www.layeredbeauty.com)
+wrangler.jsonc          Cloudflare config (custom domains: layeredbeautystudio.com, www.layeredbeautystudio.com)
 ```
 
 ## Design system
@@ -46,7 +46,7 @@ npm run dev       # http://localhost:8787
 npm run deploy    # wrangler deploy (needs `wrangler login` or CLOUDFLARE_API_TOKEN)
 ```
 
-The `routes` in `wrangler.jsonc` attach both `layeredbeauty.com` and `www.layeredbeauty.com` as Custom Domains;
+The `routes` in `wrangler.jsonc` attach both `layeredbeautystudio.com` and `www.layeredbeautystudio.com` as Custom Domains;
 the zone must be on the same Cloudflare account.
 
 ## Booking system

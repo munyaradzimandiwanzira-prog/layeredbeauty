@@ -301,8 +301,8 @@ export default {
     const url = new URL(request.url);
 
     // Canonical host: apex → www
-    if (url.hostname === 'layeredbeauty.com') {
-      url.hostname = 'www.layeredbeauty.com';
+    if (url.hostname === 'layeredbeautystudio.com') {
+      url.hostname = 'www.layeredbeautystudio.com';
       return Response.redirect(url.toString(), 301);
     }
 
